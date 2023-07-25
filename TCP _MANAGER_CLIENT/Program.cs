@@ -47,5 +47,44 @@ while (true)
             Console.Clear();
 
             break;
+        case Command.Run:
+            if (input.Length != 2)
+            {
+                Console.WriteLine("Invalid command format for Run.");
+                Console.WriteLine("Usage: Run <process_name>");
+            }
+            else
+            {
+                command = new Command { Text = input[0], Param = input[1] };
+                bw.Write(JsonSerializer.Serialize(command));
+                response = br.ReadString();
+                Console.WriteLine(response);
+            }
+            Console.ReadLine();
+            Console.Clear();
+            break;
+
+        case Command.Kill:
+            if (input.Length != 2)
+            {
+                Console.WriteLine("Invalid command format for Kill.");
+                Console.WriteLine("Usage: Kill <process_name>");
+            }
+            else
+            {
+                command = new Command { Text = input[0], Param = input[1] };
+                bw.Write(JsonSerializer.Serialize(command));
+                response = br.ReadString();
+                Console.WriteLine(response);
+            }
+            Console.ReadLine();
+            Console.Clear();
+            break;
+
+        default:
+            Console.WriteLine("Invalid command.");
+            Console.ReadLine();
+            Console.Clear();
+            break;
     }
 }

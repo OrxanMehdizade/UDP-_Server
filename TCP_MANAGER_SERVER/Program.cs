@@ -32,15 +32,16 @@ while (true)
                 bw.Write(processNames);
                 break;
             case Command.Kill:
-                Process[] processess = Process.GetProcessesByName(command.Param);
+                string processName = command.Param!;
+                Process[] processess = Process.GetProcessesByName(processName);
                 foreach (var process in processess) { process.Kill(); }
                 bw.Write("Process started successfully");
 
                 break;
             case Command.Run:
-                Process.Start(command.Param);
+                string processName1 = command.Param!;
+                Process.Start(processName1);
                 break;
-
             default:
                 break;
         }
